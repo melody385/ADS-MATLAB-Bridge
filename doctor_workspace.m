@@ -1,6 +1,6 @@
 %% ========================================================================
 % ADS-MATLAB Bridge
-% workspace_doctor_v023.m
+% doctor_workspace.m
 %
 % Version: 0.2.3
 %
@@ -8,12 +8,23 @@
 %   Workspace / library detection
 %
 % This is intentionally a SCRIPT, not a function.
-% Run ads_doctor.m first, then run this file directly.
+% Run doctor_ads.m first, then run this file directly.
 %
 % It NEVER modifies lib.defs or the ADS workspace.
 % ========================================================================
 
 clc;
+
+%% Bootstrap the public Bridge Core for this MATLAB session only
+
+BRIDGE_REPO_ROOT = fileparts(mfilename('fullpath'));
+BRIDGE_CORE_DIR = fullfile(BRIDGE_REPO_ROOT,'core');
+
+if ~isfolder(BRIDGE_CORE_DIR)
+    error('Bridge Core folder does not exist: %s',BRIDGE_CORE_DIR);
+end
+
+addpath(BRIDGE_CORE_DIR,'-begin');
 
 fprintf('\n');
 fprintf('====================================================================\n');
@@ -27,7 +38,7 @@ if ~exist('ADS_ROOT','var')
 end
 
 if isempty(ADS_ROOT)
-    error('ADS_ROOT is unavailable. Run ads_doctor.m first.');
+    error('ADS_ROOT is unavailable. Run doctor_ads.m first.');
 end
 
 if ~isfolder(ADS_ROOT)

@@ -1,7 +1,7 @@
 function [value,plotIndex,varIndex] = ads_raw_get(raw,varName,plotSelector)
 %ADS_RAW_GET Retrieve one RAW variable by its original ADS name.
+% Core module: core/ads_raw_get.m
 %
-% value = ads_raw_get(raw,'S[2,1]')
 % value = ads_raw_get(raw,'freq')
 % value = ads_raw_get(raw,'Vload',2)
 

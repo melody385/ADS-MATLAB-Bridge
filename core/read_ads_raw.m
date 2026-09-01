@@ -1,5 +1,6 @@
 function raw = read_ads_raw(rawFile)
 %READ_ADS_RAW Read ADS/Nutmeg RAW files into MATLAB.
+% Core module: core/read_ads_raw.m
 % Generic RAW Parser v0.5.1
 %
 % raw = read_ads_raw(rawFile)

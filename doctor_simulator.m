@@ -1,6 +1,6 @@
 %% ========================================================================
 % ADS-MATLAB Bridge
-% runtime_doctor.m
+% doctor_simulator.m
 %
 % Version: 0.3.1
 %
@@ -8,9 +8,9 @@
 %   ADS Runtime / DLL Environment Doctor
 %
 % Run order:
-%   1) ads_doctor.m
-%   2) workspace_doctor.m
-%   3) runtime_doctor.m
+%   1) doctor_ads.m
+%   2) doctor_workspace.m
+%   3) doctor_simulator.m
 %
 % Design:
 %   Stage A - Apply the standard ADS command-line environment:
@@ -41,6 +41,17 @@
 
 clc;
 
+%% Bootstrap the public Bridge Core for this MATLAB session only
+
+BRIDGE_REPO_ROOT = fileparts(mfilename('fullpath'));
+BRIDGE_CORE_DIR = fullfile(BRIDGE_REPO_ROOT,'core');
+
+if ~isfolder(BRIDGE_CORE_DIR)
+    error('Bridge Core folder does not exist: %s',BRIDGE_CORE_DIR);
+end
+
+addpath(BRIDGE_CORE_DIR,'-begin');
+
 fprintf('\n');
 fprintf('====================================================================\n');
 fprintf(' ADS-MATLAB BRIDGE - RUNTIME DOCTOR  v0.3.1\n');
@@ -64,13 +75,13 @@ if ~exist('ADS_ROOT','var')
 end
 
 if ~exist('ADS_ROOT','var')
-    error('ADS_ROOT is unavailable. Run ads_doctor.m first.');
+    error('ADS_ROOT is unavailable. Run doctor_ads.m first.');
 end
 
 ADS_ROOT = char(ADS_ROOT);
 
 if isempty(ADS_ROOT)
-    error('ADS_ROOT is empty. Run ads_doctor.m first.');
+    error('ADS_ROOT is empty. Run doctor_ads.m first.');
 end
 
 if ~isfolder(ADS_ROOT)
