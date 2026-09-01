@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge
 % baseline_doctor.m
+% Core module: core/baseline_doctor.m
 %
 % Version: 0.4.0
 %
@@ -11,7 +12,7 @@
 %   1) doctor_ads.m
 %   2) doctor_workspace.m
 %   3) doctor_simulator.m
-%   4) baseline_doctor.m
+%   4) run_baseline.m
 %
 % What this script does:
 %   1. Uses ADS_ROOT / ADS_SIM / ADS_WORKSPACE from previous steps
@@ -179,7 +180,7 @@ else
         fprintf('\n[FAIL] hpeesofsim startup status = %d\n',startupStatus);
 
         error(['Simulator runtime is not ready. ' ...
-               'Run doctor_simulator.m before baseline_doctor.m.']);
+               'Run doctor_simulator.m before run_baseline.m.']);
 
     end
 

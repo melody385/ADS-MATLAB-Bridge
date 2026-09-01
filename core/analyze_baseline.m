@@ -1,5 +1,6 @@
 function result = analyze_baseline(rawInput,outDir)
 %ANALYZE_BASELINE Save and summarize a generic ADS RAW baseline result.
+% Core module: core/analyze_baseline.m
 %
 % result = analyze_baseline(rawFile)
 % result = analyze_baseline(rawFile,outDir)
@@ -7,8 +8,7 @@ function result = analyze_baseline(rawInput,outDir)
 % Version: 0.6.0
 %
 % This MAIN/Core analyzer is deliberately simulation-type agnostic.
-% It does NOT interpret S11/S21, Pout, Gain, DE, HB quantities, or other
-% application-specific metrics.
+% It does NOT interpret application-specific quantities or metrics.
 %
 % Generic outputs:
 %   baseline_raw_data.mat
@@ -190,7 +190,7 @@ fprintf('  baseline_inventory.csv\n');
 fprintf('  baseline_summary.txt\n');
 fprintf('  baseline_result.mat\n');
 
-fprintf('\nNo S-parameter, HB, PA, or application-specific metric\n');
+fprintf('\nNo application-specific metric\n');
 fprintf('was calculated in the Bridge Core.\n');
 
 fprintf('============================================================\n');

@@ -41,6 +41,17 @@
 
 clc;
 
+%% Bootstrap the public Bridge Core for this MATLAB session only
+
+BRIDGE_REPO_ROOT = fileparts(mfilename('fullpath'));
+BRIDGE_CORE_DIR = fullfile(BRIDGE_REPO_ROOT,'core');
+
+if ~isfolder(BRIDGE_CORE_DIR)
+    error('Bridge Core folder does not exist: %s',BRIDGE_CORE_DIR);
+end
+
+addpath(BRIDGE_CORE_DIR,'-begin');
+
 fprintf('\n');
 fprintf('====================================================================\n');
 fprintf(' ADS-MATLAB BRIDGE - RUNTIME DOCTOR  v0.3.1\n');

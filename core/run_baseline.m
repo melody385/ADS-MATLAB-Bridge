@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge
 % run_baseline.m
+% Core entry: core/run_baseline.m
 %
 % Version: 0.6.0
 %
@@ -8,11 +9,20 @@
 %   baseline_doctor -> read_ads_raw -> analyze_baseline
 %
 % This MAIN/Core version is simulation-type agnostic.
-% It does NOT calculate or plot S-parameters, PA metrics, or other
-% application-specific quantities.
+% It does NOT calculate or plot application-specific quantities.
 % ========================================================================
 
 clc;
+
+%% Bootstrap the public Bridge Core for this MATLAB session only
+
+BRIDGE_CORE_DIR = fileparts(mfilename('fullpath'));
+
+if ~isfolder(BRIDGE_CORE_DIR)
+    error('Bridge Core folder does not exist: %s',BRIDGE_CORE_DIR);
+end
+
+addpath(BRIDGE_CORE_DIR,'-begin');
 
 fprintf('\n============================================================\n');
 fprintf(' ADS-MATLAB BRIDGE - RUN BASELINE  v0.6.0\n');
