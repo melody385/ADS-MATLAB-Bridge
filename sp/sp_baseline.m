@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge - SP Filter Branch
 % sp_baseline.m
+% Location: sp/sp_baseline.m
 %
 % Version: 0.1.0
 %
@@ -13,6 +14,24 @@
 % ========================================================================
 
 clc;
+
+%% Bootstrap Bridge Core and SP internals for this MATLAB session only
+
+SP_DIR = fileparts(mfilename('fullpath'));
+SP_REPO_ROOT = fileparts(SP_DIR);
+SP_CORE_DIR = fullfile(SP_REPO_ROOT,'core');
+SP_INTERNAL_DIR = fullfile(SP_DIR,'internal');
+
+if ~isfolder(SP_CORE_DIR)
+    error('Bridge Core folder does not exist: %s',SP_CORE_DIR);
+end
+
+if ~isfolder(SP_INTERNAL_DIR)
+    error('SP internal folder does not exist: %s',SP_INTERNAL_DIR);
+end
+
+addpath(SP_CORE_DIR,'-begin');
+addpath(SP_INTERNAL_DIR,'-begin');
 
 fprintf('\n============================================================\n');
 fprintf(' ADS-MATLAB BRIDGE - SP BASELINE  v0.1.0\n');
@@ -57,7 +76,7 @@ if isfile(variableFile)
         variableFile);
 else
     generatorFile = fullfile( ...
-        fileparts(mfilename('fullpath')), ...
+        SP_INTERNAL_DIR, ...
         'generate_filter_variables.m');
 
     if ~isfile(generatorFile)

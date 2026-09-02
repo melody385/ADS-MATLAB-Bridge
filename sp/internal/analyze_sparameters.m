@@ -1,5 +1,6 @@
 function result = analyze_sparameters(rawInput,outDir)
 %ANALYZE_SPARAMETERS Extract, save, and visualize S11/S21 from ADS RAW.
+% Internal module: sp/internal/analyze_sparameters.m
 %
 % result = analyze_sparameters(rawFile)
 % result = analyze_sparameters(rawStruct)

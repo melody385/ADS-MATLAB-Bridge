@@ -1,5 +1,6 @@
 function TARGET = validate_filter_targets(targetFile)
 %VALIDATE_FILTER_TARGETS Load and validate generic S-parameter targets.
+% Internal module: sp/internal/validate_filter_targets.m
 %
 % Version: 0.4.0
 

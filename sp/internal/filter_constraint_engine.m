@@ -1,5 +1,6 @@
 function OUTPUT = filter_constraint_engine(mode,varargin)
 %FILTER_CONSTRAINT_ENGINE Validate or evaluate user parameter constraints.
+% Internal module: sp/internal/filter_constraint_engine.m
 %
 % Version: 0.2.0
 %

@@ -1,5 +1,6 @@
 function FILTER_VARS = validate_filter_variables(configFile)
 %VALIDATE_FILTER_VARIABLES Load and validate sp_variables.m.
+% Internal module: sp/internal/validate_filter_variables.m
 %
 % FILTER_VARS = validate_filter_variables(configFile)
 %

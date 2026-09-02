@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge - SP Filter Branch
 % sp_optimizer.m
+% Location: sp/sp_optimizer.m
 %
 % Version: 0.2.1
 %
@@ -27,6 +28,24 @@
 % ========================================================================
 
 clc;
+
+%% Bootstrap Bridge Core and SP internals for this MATLAB session only
+
+spDir = fileparts(mfilename('fullpath'));
+repoDir = fileparts(spDir);
+coreDir = fullfile(repoDir,'core');
+internalDir = fullfile(spDir,'internal');
+
+if ~isfolder(coreDir)
+    error('Bridge Core folder does not exist: %s',coreDir);
+end
+
+if ~isfolder(internalDir)
+    error('SP internal folder does not exist: %s',internalDir);
+end
+
+addpath(coreDir,'-begin');
+addpath(internalDir,'-begin');
 
 fprintf('\n============================================================\n');
 fprintf(' ADS-MATLAB BRIDGE - SP OPTIMIZER  v0.2.1\n');
@@ -72,8 +91,6 @@ if ~exist('ADS_SIM','var') || ~isfile(char(ADS_SIM))
 end
 ADS_SIM = char(ADS_SIM);
 
-repoDir = fileparts(mfilename('fullpath'));
-
 %% ------------------------------------------------------------------------
 % 2. Load user variable configuration
 % -------------------------------------------------------------------------
@@ -110,14 +127,10 @@ nVar = numel(x0);
 % 3. Load generic S-parameter target configuration
 % -------------------------------------------------------------------------
 
-targetFile = fullfile(repoDir,'sp_targets.m');
+targetFile = fullfile(spDir,'sp_targets.m');
 
 if ~isfile(targetFile)
-    targetFile = which('sp_targets.m');
-end
-
-if isempty(targetFile) || ~isfile(targetFile)
-    error('sp_targets.m was not found in the sp-filter repository.');
+    error('sp_targets.m was not found: %s',targetFile);
 end
 
 TARGET = validate_filter_targets(targetFile);
@@ -126,14 +139,10 @@ TARGET = validate_filter_targets(targetFile);
 % 3B. Load optional geometry / parameter constraints
 % -------------------------------------------------------------------------
 
-constraintFile = fullfile(repoDir,'sp_constraints.m');
+constraintFile = fullfile(spDir,'sp_constraints.m');
 
 if ~isfile(constraintFile)
-    constraintFile = which('sp_constraints.m');
-end
-
-if isempty(constraintFile) || ~isfile(constraintFile)
-    error('sp_constraints.m was not found in the sp-filter repository.');
+    error('sp_constraints.m was not found: %s',constraintFile);
 end
 
 CONSTRAINTS = filter_constraint_engine( ...

@@ -1,5 +1,6 @@
 function RESULT = evaluate_sp_filter(freqGHz,S11dB,S21dB,TARGET)
 %EVALUATE_SP_FILTER Evaluate generic S-parameter requirements.
+% Internal module: sp/internal/evaluate_sp_filter.m
 %
 % RESULT = evaluate_sp_filter(freqGHz,S11dB,S21dB,TARGET)
 %

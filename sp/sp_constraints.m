@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge - Generic Geometry / Parameter Constraints
 % sp_constraints.m
+% Location: sp/sp_constraints.m
 %
 % Version: 0.1.0
 %

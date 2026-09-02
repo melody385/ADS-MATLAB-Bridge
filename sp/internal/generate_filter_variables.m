@@ -1,6 +1,7 @@
 %% ========================================================================
 % ADS-MATLAB Bridge - SP Filter Branch
 % generate_filter_variables.m
+% Internal module: sp/internal/generate_filter_variables.m
 %
 % Version: 0.1.2
 %
